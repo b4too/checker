@@ -1,5 +1,5 @@
 # checker
-## Docker image updatechecker with discord webhook
+## Docker image update checker with discord webhook integration
 
 A little script that will notify you on your discord server, check below if needed.
 <details>
