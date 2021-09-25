@@ -28,5 +28,5 @@ else
 fi
 done < images.list
 
-test=\""An update is available for $(echo $list | sed 's/\ /\ and\ /g')"\"
-curl -H "Content-Type: application/json" -d "{\"username\": \"Methatronc\",\"embeds\":[{\"description\": $test, \"title\":\"Docker Image Update Checker\", \"color\":2960895}]}" $discord
+text=\""An update is available for $(echo $list | sed 's/\ /\ and\ /g')"\"
+curl -H "Content-Type: application/json" -d "{\"username\": \"Methatronc\",\"embeds\":[{\"description\": $text, \"title\":\"Docker Image Update Checker\", \"color\":2960895}]}" $discord
