@@ -33,7 +33,8 @@ Et ajouter la ligne suivante pour un rapport à 5h par exemple :
 Désormais, vous aurez tous les matins à 5h un rapport vous indiquant quelles images parmis celles tournant sur votre installation docker ont été mises à jour il y a moins de 24h.
 Vous pouvez vous attendre à ce visuel :
 
-![result](https://user-images.githubusercontent.com/58328740/134774138-81239fa7-1552-40fe-9a36-10981dacccad.png)
+![resultat](https://user-images.githubusercontent.com/58328740/134887902-260a04de-9358-4e4f-9394-08e77037d18a.png)
+
 
 
 * **Pour info**
