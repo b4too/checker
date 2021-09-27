@@ -1,6 +1,8 @@
 # checker
 ## Docker image update checker with discord webhook integration
 
+🇫🇷 [Version Française](https://github.com/methatronc/checker/blob/main/README_FR.md) 🇫🇷
+
 A little script that will notify you on your discord server, check below if needed.
 <details>
   
