@@ -22,7 +22,7 @@ Pour récupérer l'url nécessaire à l'intégration sur discord, voir ci-dessou
    sudo apt install jq curl wget
    cd && mkdir image_checker && cd image_checker
    wget https://raw.githubusercontent.com/methatronc/checker/main/checker_fr.sh
-   chmod +x checker.sh
+   chmod +x checker_fr.sh
    su
    crontab -e
    ```
