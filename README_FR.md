@@ -49,15 +49,4 @@ Et ajouter la ligne suivante pour un rapport à 5h par exemple :
 Désormais, vous aurez tous les matins à 5h un rapport vous indiquant quelles images parmis celles tournant sur votre installation docker ont été mises à jour il y a moins de 24h.
 
 
-* **Pour info**
-
- > la 11e ligne est pour les images telles que debian/postgres/... auxquelles on ne peut accéder que via l'url library/[nom_de_l'image]
-
- > sed aux 14e et 15e lignes sont nécessaires pour les images linuxserver, pour lesquelles ghcr.io/ est ajouté à chaque nom d'image
-
- > la 18e line ajoute le tag 'latest' aux images sans tags dans votre installation, de la même façon que fait docker
-
- > la boucle while à la 21e ligne est nécessaire car de nombreuses images auront plusieurs pages de json et le tag utilisé sur votre installation peut ne pas être sur la première
-
-Si vous avez quoi que ce soit à rajouter n'hésitez pas, il est possible que certaines images nécessitent un traitement particulier comme c'est le cas par exemple pour les images linuxserver.
-
+* **Si vous avez quoi que ce soit à rajouter n'hésitez pas, il est possible que certaines images nécessitent un traitement particulier comme c'est le cas par exemple pour les images linuxserver.**
