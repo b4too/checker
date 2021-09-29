@@ -16,7 +16,12 @@ if [ "$tag" == "$image" ] ; then
   tag="latest"
 fi
 while [ "$last_updated" == "" ] ; do
-last_updated=`curl --silent "https://hub.docker.com/v2/repositories/$image/tags?page=$page" | jq --arg tag "$tag" '.results[] | select(.name==$tag) | .last_updated'`
+repo=`curl --silent "https://hub.docker.com/v2/repositories/$image/tags?page=$page"`
+if [ "$repo" == "{\"count\":0,\"next\":null,\"previous\":null,\"results\":[]}" ] ; then
+last_updated="1970-01-01T00:00:00.000000Z"
+else
+last_updated=`echo $repo | jq --arg tag "$tag" '.results[] | select(.name==$tag) | .last_updated'`
+fi
 page=`expr "$page" + 1`
 done
 current_epoch=$(expr "$(date '+%s')" - 86400)
