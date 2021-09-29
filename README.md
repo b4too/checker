@@ -1,9 +1,17 @@
 # checker
-## Docker image update checker with discord webhook integration
+## Docker image update checker with discord/gotify webhook integration
 
 🇫🇷 [Version Française](https://github.com/methatronc/checker/blob/main/README_FR.md) 🇫🇷
 
-A little script that will notify you on your discord server, check below if needed.
+A little script that will notify you on your discord server, here is what you can expect for discord :
+
+![discord](https://user-images.githubusercontent.com/58328740/134774138-81239fa7-1552-40fe-9a36-10981dacccad.png)
+
+And for gotify :
+
+![gotify](https://user-images.githubusercontent.com/58328740/135288303-b5e16f96-27e4-4fab-a3f2-bb1850bdd02c.png)
+
+For help recovering your discord webhook url see below :
 <details>
   
 ![First](https://user-images.githubusercontent.com/58328740/134774122-ea3a12c8-13c3-42be-b93a-1d8880ecd8ec.png)
@@ -13,37 +21,39 @@ A little script that will notify you on your discord server, check below if need
 ![Then](https://user-images.githubusercontent.com/58328740/134737233-01f0fa86-2766-4de8-8e75-bee694798dcb.png)
    
 </details>
-"Copy Webhook URL" will get you the url that needs to be put at the 4th line of checker.sh.
+"Copy Webhook URL" will get you the url that needs to be put at the 3rd line of checker_discord.sh.
+
+For gotify, see [here](https://gotify.net/docs/pushmsg), it also needs to be put at the 3rd line in checker_gotify.sh.
 
 * **Installation**
 
    ``` bash
    sudo apt install jq curl wget
    cd && mkdir image_checker && cd image_checker
-   wget https://raw.githubusercontent.com/methatronc/checker/main/checker.sh
+   # For discord :
+   wget https://raw.githubusercontent.com/methatronc/checker/main/checker_discord.sh
+   # For gotify :
+   wget https://raw.githubusercontent.com/methatronc/checker/main/checker_gotify.sh
    chmod +x checker.sh
    su
    crontab -e
    ```
 And add the following line for instance :
    ``` bash
-   0 5 * * * /home/[your_username]/image_checker/checker.sh > /home/[your_username]/image_checker/cron.log 2>&1
+   0 5 * * * /home/[your_username]/image_checker/checker_[discord/gotify].sh > /home/[your_username]/image_checker/cron.log 2>&1
    ```
 Now you will have your daily report at 5am on your discord server if any image currently used on the host executing the cron gets updated.
-Here is what you can expect :
-
-![result](https://user-images.githubusercontent.com/58328740/134774138-81239fa7-1552-40fe-9a36-10981dacccad.png)
 
 
 * **For info**
 
- > 8th line is for images such as debian/postgres/... that can only be accessed with library/[image_name] url
+ > 11th line is for images such as debian/postgres/... that can only be accessed with library/[image_name] url
 
- > sed at 11th and 12th lines is used because linuxserver images will output with ghcr.io/ appended to the name and that needs to be cut
+ > sed at 14th and 15th lines is used because linuxserver images will output with ghcr.io/ appended to the name and that needs to be cut
 
- > the 15th line adds by default the tag 'latest' to the images that are without tag, same way docker does
+ > the 18th line adds by default the tag 'latest' to the images that are without tag, same way docker does
 
- > the 18th line while loop is necessary because most images will get multiple pages and your tag might not be on the first
+ > the 21st line while loop is necessary because most images will get multiple pages and your tag might not be on the first
 
 If you have anything to add please do, some images might need other particular treatment.
 
