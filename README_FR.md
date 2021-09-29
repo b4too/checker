@@ -1,7 +1,16 @@
 # checker
-## Surveillant de mise à jour d'images docker avec intégration sur serveur discord
+## Surveillant de mise à jour d'images docker avec intégration sur serveur discord/gotify
 
-Ce petit script va vous permettre d'être notifié sur votre serveur discord de toute mise à jour d'une image docker actuellement utilisée sur l'hôte.
+Ce petit script va vous permettre d'être notifié sur votre serveur discord ou gotify de toute mise à jour d'une image docker actuellement utilisée sur l'hôte.
+Vous pouvez vous attendre à ceci sur discord :
+
+![discord](https://user-images.githubusercontent.com/58328740/134887902-260a04de-9358-4e4f-9394-08e77037d18a.png)
+
+Et à ceci sur gotify :
+
+![gotify](https://user-images.githubusercontent.com/58328740/135293100-8a0c2bbc-4c26-411d-90a9-fae98ce64fd6.png)
+
+
 Pour récupérer l'url nécessaire à l'intégration sur discord, voir ci-dessous.
 
 <details>
@@ -14,38 +23,41 @@ Pour récupérer l'url nécessaire à l'intégration sur discord, voir ci-dessou
    
 </details>
 
-"Copier l'URL du Webhook" donnera le lien qu'il faut placer à la quatrième ligne du script checker_fr.sh.
+"Copier l'URL du Webhook" donnera le lien qu'il faut placer à la troisième ligne du script checker_discord_fr.sh.
+
+De même, il faudra placer à la troisième ligne de checker_gotify_fr.sh l'url de votre serveur gotify avec le token.
+
+Pour savoir comment faire [rendez-vous ici](https://gotify.net/docs/pushmsg).
 
 * **Installation**
 
    ``` bash
    sudo apt install jq curl wget
    cd && mkdir image_checker && cd image_checker
-   wget https://raw.githubusercontent.com/methatronc/checker/main/checker_fr.sh
-   chmod +x checker_fr.sh
+   # Pour discord :
+   wget https://raw.githubusercontent.com/methatronc/checker/main/checker_discord_fr.sh
+   # Pour gotify :
+   wget https://raw.githubusercontent.com/methatronc/checker/main/checker_gotify_fr.sh
+   chmod +x checker_[discord/gotify]_fr.sh
    su
    crontab -e
    ```
 Et ajouter la ligne suivante pour un rapport à 5h par exemple :
    ``` bash
-   0 5 * * * /home/[your_username]/image_checker/checker_fr.sh > /home/[your_username]/image_checker/cron.log 2>&1
+   0 5 * * * /home/[your_username]/image_checker/checker_[discord/gotify]_fr.sh > /home/[your_username]/image_checker/cron.log 2>&1
    ```
 Désormais, vous aurez tous les matins à 5h un rapport vous indiquant quelles images parmis celles tournant sur votre installation docker ont été mises à jour il y a moins de 24h.
-Vous pouvez vous attendre à ce visuel :
-
-![resultat](https://user-images.githubusercontent.com/58328740/134887902-260a04de-9358-4e4f-9394-08e77037d18a.png)
-
 
 
 * **Pour info**
 
- > la 8e ligne est pour les images telles que debian/postgres/... auxquelles on ne peut accéder que via l'url library/[nom_de_l'image]
+ > la 11e ligne est pour les images telles que debian/postgres/... auxquelles on ne peut accéder que via l'url library/[nom_de_l'image]
 
- > sed aux 11e et 12e lignes sont nécessaires pour les images linuxserver, pour lesquelles ghcr.io/ est ajouté à chaque nom d'image
+ > sed aux 14e et 15e lignes sont nécessaires pour les images linuxserver, pour lesquelles ghcr.io/ est ajouté à chaque nom d'image
 
- > la 15e line ajoute le tag 'latest' aux images sans tags dans votre installation, de la même façon que fait docker
+ > la 18e line ajoute le tag 'latest' aux images sans tags dans votre installation, de la même façon que fait docker
 
- > la boucle while à la 18e ligne est nécessaire car de nombreuses images auront plusieurs pages de json et le tag utilisé sur votre installation peut ne pas être sur la première
+ > la boucle while à la 21e ligne est nécessaire car de nombreuses images auront plusieurs pages de json et le tag utilisé sur votre installation peut ne pas être sur la première
 
 Si vous avez quoi que ce soit à rajouter n'hésitez pas, il est possible que certaines images nécessitent un traitement particulier comme c'est le cas par exemple pour les images linuxserver.
 
