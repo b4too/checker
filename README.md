@@ -34,7 +34,7 @@ For gotify, see [here](https://gotify.net/docs/pushmsg), it also needs to be put
    wget https://raw.githubusercontent.com/methatronc/checker/main/checker_discord.sh
    # For gotify :
    wget https://raw.githubusercontent.com/methatronc/checker/main/checker_gotify.sh
-   chmod +x checker.sh
+   chmod +x checker_[discord/gotify].sh
    su
    crontab -e
    ```
