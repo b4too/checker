@@ -45,15 +45,4 @@ And add the following line for instance :
 Now you will have your daily report at 5am on your discord server if any image currently used on the host executing the cron gets updated.
 
 
-* **For info**
-
- > 11th line is for images such as debian/postgres/... that can only be accessed with library/[image_name] url
-
- > sed at 14th and 15th lines is used because linuxserver images will output with ghcr.io/ appended to the name and that needs to be cut
-
- > the 18th line adds by default the tag 'latest' to the images that are without tag, same way docker does
-
- > the 21st line while loop is necessary because most images will get multiple pages and your tag might not be on the first
-
-If you have anything to add please do, some images might need other particular treatment.
-
+* **If you have anything to add please do, some images might need other particular treatment.**
