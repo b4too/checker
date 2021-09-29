@@ -1,7 +1,10 @@
 #!/bin/bash
 
-docker ps --format "{{.Image}}" > images.list
 discord="[webhook_url]"
+
+docker ps --format "{{.Image}}" > images.list.tmp
+uniq images.list.tmp images.list
+rm -f images.list.tmp
 list=""
 
 while read line ; do
