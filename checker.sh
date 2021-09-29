@@ -18,20 +18,20 @@ fi
 while [ "$last_updated" == "" ] ; do
 repo=`curl --silent "https://hub.docker.com/v2/repositories/$image/tags?page=$page"`
 if [ "$repo" == "{\"count\":0,\"next\":null,\"previous\":null,\"results\":[]}" ] ; then
-last_updated="1970-01-01T00:00:00.000000Z"
+  last_updated="1970-01-01T00:00:00.000000Z"
 else
-last_updated=`echo $repo | jq --arg tag "$tag" '.results[] | select(.name==$tag) | .last_updated'`
+  last_updated=`echo $repo | jq --arg tag "$tag" '.results[] | select(.name==$tag) | .last_updated'`
 fi
 page=`expr "$page" + 1`
 done
 current_epoch=$(expr "$(date '+%s')" - 86400)
 last_updated_epoch=$(date -d $(echo $last_updated | cut -d \" -f 2) '+%s')
 if [ "$last_updated_epoch" \> "$current_epoch" ] ; then
-  list=$list$(echo " \`$line\`")
+  list=$list$(echo " and \`$line\`")
 else
   echo "No update for $line since yesterday."
 fi
 done < images.list
 
-text=\""An update is available for $(echo $list | sed 's/\ /\ and\ /g')"\"
+text=\""An update is available for $(echo $list)"\"
 curl -H "Content-Type: application/json" -d "{\"username\": \"Methatronc\",\"embeds\":[{\"description\": $text, \"title\":\"Docker Image Update Checker\", \"color\":2960895}]}" $discord
