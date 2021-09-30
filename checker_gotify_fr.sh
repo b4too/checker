@@ -45,7 +45,9 @@ done
 current_epoch=$(expr "$(date '+%s')" - 86400)
 last_updated_epoch=$(date -d $(echo $last_updated | cut -d \" -f 2) '+%s')
 if [ "$last_updated_epoch" \> "$current_epoch" ] ; then
-  list=$list$(echo "\n\`$line\`")
+
+# deux \n sont nécessaires pour un retour à la ligne sur android
+  list=$list$(echo "\n\n\`$line\`")
 else
   echo "Pas de mise à jour pour $image:$tag depuis hier."
 fi
