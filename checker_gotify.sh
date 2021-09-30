@@ -45,7 +45,9 @@ done
 current_epoch=$(expr "$(date '+%s')" - 86400)
 last_updated_epoch=$(date -d $(echo $last_updated | cut -d \" -f 2) '+%s')
 if [ "$last_updated_epoch" \> "$current_epoch" ] ; then
-  list=$list$(echo "\n\`$line\`")
+
+# two \n are needed for the android app to display one carriage return
+  list=$list$(echo "\n\n\`$line\`")
 else
   echo "No update for $image:$tag since yesterday."
 fi
