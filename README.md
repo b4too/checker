@@ -5,11 +5,12 @@
 
 A little script that will notify you on your discord server, here is what you can expect for discord :
 
-![discord](https://user-images.githubusercontent.com/58328740/134774138-81239fa7-1552-40fe-9a36-10981dacccad.png)
+![discord](https://user-images.githubusercontent.com/58328740/135639013-60f49dd5-bda0-4fdd-a9e9-00ba871c7ef7.png)
 
 And for gotify :
 
-![gotify](https://user-images.githubusercontent.com/58328740/135288303-b5e16f96-27e4-4fab-a3f2-bb1850bdd02c.png)
+![gotify](https://user-images.githubusercontent.com/58328740/135637988-bdcd5a0e-cff5-4dd8-a036-d3ca74a1bf46.png)
+
 
 For help recovering your discord webhook url see below :
 <details>
@@ -21,28 +22,26 @@ For help recovering your discord webhook url see below :
 ![Then](https://user-images.githubusercontent.com/58328740/134737233-01f0fa86-2766-4de8-8e75-bee694798dcb.png)
    
 </details>
-"Copy Webhook URL" will get you the url that needs to be put at the 3rd line of checker_discord.sh.
+"Copy Webhook URL" will get you the url that needs to be put at the 3rd line of checker.sh, in the "token" variable.
 
-For gotify, see [here](https://gotify.net/docs/pushmsg), it also needs to be put at the 3rd line in checker_gotify.sh.
+If like me you would rather use gotify, see [here](https://gotify.net/docs/pushmsg) to recover the token that also needs to be put at the 3rd line of the script.
 
 * **Installation**
 
    ``` bash
    sudo apt install jq curl wget
    cd && mkdir image_checker && cd image_checker
-   # For discord :
-   wget https://raw.githubusercontent.com/methatronc/checker/main/checker_discord.sh
-   # For gotify :
-   wget https://raw.githubusercontent.com/methatronc/checker/main/checker_gotify.sh
-   chmod +x checker_[discord/gotify].sh
+   wget https://raw.githubusercontent.com/methatronc/checker/main/checker.sh
+   chmod +x checker.sh
    su
    crontab -e
    ```
 And add the following line for instance :
    ``` bash
-   0 5 * * * /home/[your_username]/image_checker/checker_[discord/gotify].sh > /home/[your_username]/image_checker/cron.log 2>&1
+   0 5 * * * /home/[your_username]/image_checker/checker.sh > /home/[your_username]/image_checker/cron.log 2>&1
    ```
-Now you will have your daily report at 5am on your discord server if any image currently used on the host executing the cron gets updated.
+* Now you will have your daily report at 5am on your discord server if any image currently used on the host executing the cron gets updated.
 
+* **Do not forget to specify the gotify/discord token at the 3rd line or else nothing will happen.**
 
-* **If you have anything to add please do, some images might need other particular treatment.**
+* If you have anything to add please do, some images might need other particular treatment.
