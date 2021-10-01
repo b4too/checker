@@ -2,13 +2,15 @@
 ## Surveillant de mise à jour d'images docker avec intégration sur serveur discord/gotify
 
 Ce petit script va vous permettre d'être notifié sur votre serveur discord ou gotify de toute mise à jour d'une image docker actuellement utilisée sur l'hôte.
+
 Vous pouvez vous attendre à ceci sur discord :
 
-![discord](https://user-images.githubusercontent.com/58328740/134887902-260a04de-9358-4e4f-9394-08e77037d18a.png)
+![discord](https://user-images.githubusercontent.com/58328740/135635968-d73e27e8-2bcf-458d-959e-a4a82d1f994d.png)
+
 
 Et à ceci sur gotify :
 
-![gotify](https://user-images.githubusercontent.com/58328740/135293100-8a0c2bbc-4c26-411d-90a9-fae98ce64fd6.png)
+![gotify](https://user-images.githubusercontent.com/58328740/135636875-5e8f9611-6797-4e63-b70f-c5c16285999e.png)
 
 
 Pour récupérer l'url nécessaire à l'intégration sur discord, voir ci-dessous.
@@ -23,30 +25,28 @@ Pour récupérer l'url nécessaire à l'intégration sur discord, voir ci-dessou
    
 </details>
 
-"Copier l'URL du Webhook" donnera le lien qu'il faut placer à la troisième ligne du script checker_discord_fr.sh.
+"Copier l'URL du Webhook" donnera le lien qu'il faut placer à la troisième ligne du script checker.sh dans la variable "token".
 
-De même, il faudra placer à la troisième ligne de checker_gotify_fr.sh l'url de votre serveur gotify avec le token.
+De même, il faudra placer à ce même endroit l'url de votre serveur gotify avec le token dans la variable "token" si c'est comme moi la solution que vous préférez.
 
-Pour savoir comment faire [rendez-vous ici](https://gotify.net/docs/pushmsg).
+Pour savoir comment faire pour récupérer l'url+token de gotify [rendez-vous ici](https://gotify.net/docs/pushmsg).
 
 * **Installation**
 
    ``` bash
    sudo apt install jq curl wget
    cd && mkdir image_checker && cd image_checker
-   # Pour discord :
-   wget https://raw.githubusercontent.com/methatronc/checker/main/checker_discord_fr.sh
-   # Pour gotify :
-   wget https://raw.githubusercontent.com/methatronc/checker/main/checker_gotify_fr.sh
-   chmod +x checker_[discord/gotify]_fr.sh
+   wget https://raw.githubusercontent.com/methatronc/checker/main/checker.sh
+   chmod +x checker.sh
    su
    crontab -e
    ```
 Et ajouter la ligne suivante pour un rapport à 5h par exemple :
    ``` bash
-   0 5 * * * /home/[your_username]/image_checker/checker_[discord/gotify]_fr.sh > /home/[your_username]/image_checker/cron.log 2>&1
+   0 5 * * * /home/[your_username]/image_checker/checker.sh > /home/[your_username]/image_checker/cron.log 2>&1
    ```
-Désormais, vous aurez tous les matins à 5h un rapport vous indiquant quelles images parmis celles tournant sur votre installation docker ont été mises à jour il y a moins de 24h.
+* Désormais, vous aurez tous les matins à 5h un rapport vous indiquant quelles images parmis celles tournant sur votre installation docker ont été mises à jour il y a moins de 24h.
 
+* **N'oubliez pas de mettre dans le script votre token gotify ou discord, sans cela ce script n'aura aucun effet.**
 
-* **Si vous avez quoi que ce soit à rajouter n'hésitez pas, il est possible que certaines images nécessitent un traitement particulier comme c'est le cas par exemple pour les images linuxserver.**
+* Si vous avez quoi que ce soit à rajouter n'hésitez pas, il est possible que certaines images nécessitent un traitement particulier comme c'est le cas par exemple pour les images linuxserver.
