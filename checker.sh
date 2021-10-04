@@ -31,8 +31,8 @@ if [ "`echo $line | grep \/`" == "" ] ; then
 fi
 
 # belows is needed because linuxserver images will output with ghcr.io/ appended to the name and that needs to be cut
-image=`echo $line | cut -d : -f 1 | sed 's/ghcr.io\///'`
-tag=`echo $line | cut -d : -f 2 | sed 's/ghcr.io\///'`
+image=`echo $line | cut -d : -f 1 | sed 's/ghcr.io\///' | sed 's/lscr.io\///'`
+tag=`echo $line | cut -d : -f 2 | sed 's/ghcr.io\///' | sed 's/lscr.io\///'`
 
 last_updated=""
 page=1
