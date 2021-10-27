@@ -15,11 +15,8 @@ else
 lang=en
 fi
 
-docker ps --format "{{.Image}}" > images.list.tmp
-
 # below will remove duplicates
-uniq images.list.tmp images.list
-rm -f images.list.tmp
+docker ps --format "{{.Image}}" | sort -u > images.list
 
 list=""
 
