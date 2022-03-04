@@ -33,7 +33,7 @@ If like me you would rather use gotify, see [here](https://gotify.net/docs/pushm
    cd && mkdir image_checker && cd image_checker
    wget https://raw.githubusercontent.com/methatronc/checker/main/checker.sh
    chmod +x checker.sh
-   su
+   su [the user that will execute this cron and that MUST NOT have any special privileges since we are retrieving external data]
    crontab -e
    ```
 And add the following line for instance :
