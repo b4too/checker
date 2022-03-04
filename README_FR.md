@@ -38,7 +38,7 @@ Pour savoir comment faire pour récupérer l'url+token de gotify [rendez-vous ic
    cd && mkdir image_checker && cd image_checker
    wget https://raw.githubusercontent.com/methatronc/checker/main/checker.sh
    chmod +x checker.sh
-   su
+   su [utilisateur qui va executer ce script et qui ne DOIT PAS avoir le moindre privilège superflu car nous traitons des données externes]
    crontab -e
    ```
 Et ajouter la ligne suivante pour un rapport à 5h par exemple :
