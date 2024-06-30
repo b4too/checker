@@ -5,8 +5,7 @@ Ce petit script va vous permettre d'être notifié sur votre serveur discord ou 
 
 Vous pouvez vous attendre à ceci sur discord :
 
-![discord](https://user-images.githubusercontent.com/58328740/135635968-d73e27e8-2bcf-458d-959e-a4a82d1f994d.png)
-
+![discord](https://github.com/b4too/checker/assets/58328740/df8fcc38-b440-4df0-9525-3bbe0f413b27)
 
 Et à ceci sur gotify :
 
