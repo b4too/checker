@@ -5,7 +5,7 @@
 
 A little script that will notify you on your discord server, here is what you can expect for discord :
 
-![discord](https://user-images.githubusercontent.com/58328740/135639013-60f49dd5-bda0-4fdd-a9e9-00ba871c7ef7.png)
+![discord](https://github.com/b4too/checker/assets/58328740/656ed2e0-a09b-4524-b615-2b32722ec6db)
 
 And for gotify :
 
